@@ -13,10 +13,10 @@ public class ClickeableBorder : ClickableEntity {
 
 	//
 	void OnMouseDown () {
-		if (!GameControl.instance.inTransition) {
+		if (!GameControl.instance.inTransition && BehaviourHundlor.instance.monoAction == null) {
 			object nodeReference = walkNode;
 			Debug.Log ("Will move " + GameControl.instance.mainCharacter.name + " towards " + walkNode.position);
-			BehaviourHundlor.instance.AddToMono ("WalkToObjectNode", ref nodeReference);
+            BehaviourHundlor.instance.AddToMono ("WalkToObjectNode", ref nodeReference);
 			GameControl.instance.transitionScreen.InitTransition (new Vector3 (GameControl.instance.spacing * direction, 0, 0), teleportTarget.position);
 			GameControl.instance.inTransition = true;
 		}
