@@ -17,7 +17,7 @@ public class ClickeableBorder : ClickableEntity {
 			object nodeReference = walkNode;
 			Debug.Log ("Will move " + GameControl.instance.mainCharacter.name + " towards " + walkNode.position);
 			BehaviourHundlor.instance.AddToMono ("WalkToObjectNode", ref nodeReference);
-			GameControl.instance.transitionScreen.InitTransition (new Vector3 (GameControl.instance.spacing * direction, 0, 0), teleportTarget.position);
+			GameControl.instance.transitionScreen.InitTransition (new Vector3 (25 * direction, 0, 0), teleportTarget.position);
 			GameControl.instance.inTransition = true;
 		}
 	}
