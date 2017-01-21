@@ -23,6 +23,9 @@ public class ClickableEntity : MonoBehaviour {
 
     void OnMouseDown () {
         if (!GameControl.instance.inTransition) {
+            object nodeReference = 0;
+            //BehaviourHundlor.instance.AddToMono ("WalkToObjectNode", ref nodeReference);
+            Debug.Log (GameControl.instance);
             Debug.Log ("Will move " + GameControl.instance.mainCharacter.name + " towards " + walkNode.position);
         }
     }

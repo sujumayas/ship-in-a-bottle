@@ -9,6 +9,7 @@ public class GameControl : MonoBehaviour {
 
     public static GameControl instance;
     public Transform mainCharacter;
+    public float mainCharMovePace;
 
     void Awake () {
         instance = this;
