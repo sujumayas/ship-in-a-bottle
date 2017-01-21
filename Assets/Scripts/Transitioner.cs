@@ -12,6 +12,7 @@ public class Transitioner : MonoBehaviour {
     public FadeState currentState;
     public float fadeSpeed;
     Vector3 currentMove;
+    Vector3 charTargetMove;
     Renderer rend;
 
 	// Use this for initialization
@@ -38,7 +39,9 @@ public class Transitioner : MonoBehaviour {
                     rend.material.color = temp;
                     currentState = FadeState.Set;
                     Camera.main.transform.Translate (currentMove);
+                    GameControl.instance.mainCharacter.position = charTargetMove;
                     currentMove = Vector3.zero;
+                    charTargetMove = Vector3.zero;
                 }
             } else if (currentState == FadeState.Set) {
                 if (rend.material.color.a > 0) {
@@ -56,8 +59,9 @@ public class Transitioner : MonoBehaviour {
         }
 	}
 
-    public void InitTransition (Vector3 moveDir) {
+    public void InitTransition (Vector3 moveDir, Vector3 charMove) {
         currentState = FadeState.Init;
         currentMove = moveDir;
+        charTargetMove = charMove;
     }
 }
