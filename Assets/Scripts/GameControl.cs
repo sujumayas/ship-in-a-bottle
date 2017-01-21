@@ -24,15 +24,6 @@ public class GameControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (!inTransition) {
-            if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-                transitionScreen.InitTransition (new Vector3 (-spacing, 0, 0));
-                inTransition = true;
-            } else if (Input.GetKeyDown (KeyCode.RightArrow)) {
-                transitionScreen.InitTransition (new Vector3 (spacing, 0, 0));
-                inTransition = true;
-            }
-        }
     }
 
     public void EndTransition () {

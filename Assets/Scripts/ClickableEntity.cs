@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ClickableEntity : MonoBehaviour {
 
-    Transform walkNode;
+    protected Transform walkNode;
     public string hoverText;
 
 	// Use this for initialization
@@ -31,6 +31,7 @@ public class ClickableEntity : MonoBehaviour {
 
     void OnMouseDown () {
         if (!GameControl.instance.inTransition) {
+			Debug.Log("Chau");
             object nodeReference = walkNode;
             Debug.Log ("Will move " + GameControl.instance.mainCharacter.name + " towards " + walkNode.position);
             BehaviourHundlor.instance.AddToMono ("WalkToObjectNode", ref nodeReference);
