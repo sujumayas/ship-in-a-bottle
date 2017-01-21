@@ -29,18 +29,19 @@ public class BehaviourHundlor : MonoBehaviour {
     public void AddToMono (string _methodName, ref object _runtimeObject) {
         Type actionsType = typeof (BehaviourHundlor);
         MethodInfo actionFound = actionsType.GetMethod (_methodName);
+        Debug.Log ("HERE");
         if (actionFound != null && monoAction == null) {
+            Debug.Log ("THEN HERE");
             monoAction = (MonoAction) Delegate.CreateDelegate (typeof (MonoAction), _runtimeObject, actionFound);
         }
     }
 
-    public void WalkToObjectNode (object _objReference) {
-        Debug.Log ("HERE");
+    static public void WalkToObjectNode (object _objReference) {
         GameControl.instance.mainCharacter.position = Vector3.MoveTowards (GameControl.instance.mainCharacter.position, (_objReference as Transform).position,
-            GameControl.instance.mainCharMovePace);
+            GameControl.instance.mainCharMovePace * Time.deltaTime);
         if (GameControl.instance.mainCharacter.position == (_objReference as Transform).position) {
             Debug.Log ("I made it!");
-            monoAction = null;
+            instance.monoAction = null;
         }
     }
 }

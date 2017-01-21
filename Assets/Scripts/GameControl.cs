@@ -11,6 +11,8 @@ public class GameControl : MonoBehaviour {
     public Transform mainCharacter;
     public float mainCharMovePace;
 
+    public TextHandler bottomText;
+
     void Awake () {
         instance = this;
     }
