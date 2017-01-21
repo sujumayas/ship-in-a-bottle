@@ -16,10 +16,14 @@ public class ClickableEntity : MonoBehaviour {
 	}
 
     void OnMouseEnter () {
-        Debug.Log ("You Just put your mouse over a Clickable");
+        if (!GameControl.instance.inTransition) {
+            Debug.Log ("You Just put your mouse over a Clickable");
+        }
     }
 
     void OnMouseDown () {
-        Debug.Log ("Will move " + GameControl.instance.mainCharacter.name + " towards " + walkNode.position);
+        if (!GameControl.instance.inTransition) {
+            Debug.Log ("Will move " + GameControl.instance.mainCharacter.name + " towards " + walkNode.position);
+        }
     }
 }
