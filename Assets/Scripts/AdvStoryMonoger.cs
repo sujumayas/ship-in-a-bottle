@@ -44,10 +44,16 @@ public class Puzzle {
 
 public class AdvStoryMonoger : MonoBehaviour {
 
+    public static AdvStoryMonoger instance;
+    
     public readonly List<Puzzle> puzzles = new List<Puzzle> ();
     public readonly List<Puzzle> activePuzzles = new List<Puzzle> ();
     public readonly List<Puzzle> completed = new List<Puzzle> ();
-    // Use this for initialization
+
+    void Awake () {
+        instance = this;
+    }
+
     void Start () {
         Puzzle puzzle;
         puzzle = new Puzzle ("PZ01", "PZ02");
