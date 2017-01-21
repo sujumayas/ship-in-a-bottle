@@ -5,9 +5,10 @@ public class TextHandler : MonoBehaviour {
 
 	private bool timed = false;
 
-	private string initialText = "Initial Text";
+	private string initialText; 
 
 	void Start () {
+	 	initialText = transform.GetComponent<TextMesh>().text;
 		SetText(initialText, false);
 	}
 
