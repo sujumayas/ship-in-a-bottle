@@ -42,7 +42,7 @@ public class BehaviourHundlor : MonoBehaviour {
 			"no ha sido un acto intencional y que \n" +
 			"sus bisnietos desean conocerlo con ansias. ");
 		SFDAData.Add("Trabajaremos con mucho esfuerzo para que su extracción sea exitosa: \n" +
-			"Los sistemas de comunicación trabajan aún en una mínima capacidad, \n" +
+			"Los sistemas de comunicación funcinonan aún en una mínima capacidad, \n" +
 			"es mejor si confirma nuestras órdenes a través de la antena… ");
 		SFDAData.Add("Las pulsaciones de luz son la forma más certera de \n" +
 			"cruzar la barrera temporal que nos separa…");
