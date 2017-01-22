@@ -1,0 +1,147 @@
+fileFormatVersion: 2
+guid: 0c7e74b042e8d4cbdb251d625f6e388a
+timeCreated: 1485052725
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: DespegueObjetos_0
+    21300002: DespegueObjetos_1
+    21300004: DespegueObjetos_2
+    21300006: DespegueObjetos_3
+    21300008: DespegueObjetos_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: DespegueObjetos_0
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 139
+        width: 49
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: DespegueObjetos_1
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 149
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16.5, y: 19.5}
+        - {x: -12.5, y: 19.5}
+        - {x: -13.5, y: 17.5}
+        - {x: -20.5, y: -5.5}
+        - {x: -20.5, y: -19.5}
+        - {x: 16.5, y: -19.5}
+        - {x: 20.5, y: -17.5}
+        - {x: 20.5, y: 12.5}
+    - name: DespegueObjetos_2
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 155
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 16}
+        - {x: -14, y: 14}
+        - {x: -19, y: 6}
+        - {x: -19, y: -14}
+        - {x: -16, y: -16}
+        - {x: 7, y: -16}
+        - {x: 19, y: -9}
+        - {x: 19, y: 13}
+        - {x: 17, y: 16}
+    - name: DespegueObjetos_3
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 82
+        width: 132
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -66, y: 34.5}
+        - {x: -66, y: -34.5}
+        - {x: 19, y: -34.5}
+        - {x: 66, y: 14.5}
+        - {x: 66, y: 34.5}
+    - name: DespegueObjetos_4
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 105
+        width: 165
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -59.5, y: 20}
+        - {x: -82.5, y: 0}
+        - {x: -82.5, y: -17}
+        - {x: -80.5, y: -20}
+        - {x: 23.5, y: -20}
+        - {x: 82.5, y: -14}
+        - {x: 82.5, y: 1}
+        - {x: 48.5, y: 20}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
