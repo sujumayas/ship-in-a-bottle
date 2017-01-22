@@ -44,7 +44,7 @@ public class BehaviourHundlor : MonoBehaviour {
 		SFDAData.Add("Trabajaremos con mucho esfuerzo \n" +
 			"para que su extracción sea exitosa: \n" +
 			"Los sistemas de comunicación están fallando, \n" +
-			"es mejor si confirma nuestras órdenes a través de la antena.");
+			"confirme nuestras órdenes a través de la antena.");
 		SFDAData.Add("Las pulsaciones de luz son la forma más certera de \n" +
 			"cruzar la barrera temporal que nos separa…");
 
@@ -95,10 +95,13 @@ public class BehaviourHundlor : MonoBehaviour {
 		SFDAData.Add("Por favor tómese un tiempo para responder a \n" +
 			"esta encuesta sobre el servicio de extracción que acaba de recibir… \n" +
 			"del 1 al 10… [Sonido de estática]");
-		SFDAData.Add("Fin de la transmisión…");	
+		SFDAData.Add("Fin de la transmisión…");
 
-
-	}
+        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 0));
+        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 1));
+        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 2));
+        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 3));
+    }
 	// Update is called once per frame
 	void Update () {
         if (monoAction != null) {
