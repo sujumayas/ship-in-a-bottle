@@ -12,6 +12,7 @@ public class GameControl : MonoBehaviour {
     public float mainCharMovePace;
 
     public TextHandler bottomText;
+    public TextHandler tCommsText;
 
     void Awake () {
         instance = this;

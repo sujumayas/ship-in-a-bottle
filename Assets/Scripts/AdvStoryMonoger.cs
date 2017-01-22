@@ -94,7 +94,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         }
         foreach (Puzzle puzzle in removals) {
             completed.Add (puzzle);
-            puzzles.Remove (puzzle);
+            activePuzzles.Remove (puzzle);
             CallOnDone (puzzle);
         }
     }

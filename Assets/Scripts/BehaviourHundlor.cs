@@ -61,6 +61,13 @@ public class BehaviourHundlor : MonoBehaviour {
             GameControl.instance.mainCharacter.GetComponent<Animator> ().runtimeAnimatorController =
             GameControl.instance.mainCharacter.GetComponent<CharacterAnimations> ().moving;
         }
+        if (((_objReference as Transform).position.x - GameControl.instance.mainCharacter.transform.position.x < 0) &&
+            !GameControl.instance.mainCharacter.GetComponent<SpriteRenderer> ().flipX) {
+            GameControl.instance.mainCharacter.GetComponent<SpriteRenderer> ().flipX = true;
+        } else if (((_objReference as Transform).position.x - GameControl.instance.mainCharacter.transform.position.x > 0) &&
+            GameControl.instance.mainCharacter.GetComponent<SpriteRenderer> ().flipX) {
+            GameControl.instance.mainCharacter.GetComponent<SpriteRenderer> ().flipX = false;
+        }
         GameControl.instance.mainCharacter.position = Vector3.MoveTowards (GameControl.instance.mainCharacter.position, (_objReference as Transform).position,
             GameControl.instance.mainCharMovePace * Time.deltaTime);
         if (GameControl.instance.mainCharacter.position == (_objReference as Transform).position) {
