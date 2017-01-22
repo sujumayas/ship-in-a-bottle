@@ -20,11 +20,11 @@ public class Puzzle {
     public List<Task> tasks;
     public string toActive;
 
-    public string outcome;
-    public object parameter;
+    public List<MonoInstruction> outcomes;
 
     public Puzzle (string _id, string _toActive = null) {
         tasks = new List<Task> ();
+        outcomes = new List<MonoInstruction> ();
         id = _id;
         toActive = _toActive;
     }
@@ -34,8 +34,7 @@ public class Puzzle {
     }
 
     public void SetOutcome (string _methodName, object _reference) {
-        outcome = _methodName;
-        parameter = _reference;
+        outcomes.Add (new MonoInstruction (_methodName, _reference));
     }
 
     public void Check (string _id) {
@@ -63,6 +62,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         Puzzle puzzle;
         puzzle = new Puzzle ("PZ01", "PZ02");
         puzzle.AddTask (new Task ("TK01"));
+        puzzle.SetOutcome ("DisableObject", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite2").gameObject);
         puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
         puzzles.Add (puzzle);
         //---------------------------------//
@@ -112,7 +112,9 @@ public class AdvStoryMonoger : MonoBehaviour {
         if (!string.IsNullOrEmpty (puzzle.toActive)) {
             activePuzzles.Add (Search (puzzle.toActive));
         }
-        BehaviourHundlor.instance.EnqueueAction (new MonoInstruction (puzzle.outcome, puzzle.parameter));
+        foreach (MonoInstruction outcome in puzzle.outcomes) {
+            BehaviourHundlor.instance.EnqueueAction (outcome);
+        }
         Debug.Log ("Activated " + puzzle.toActive);
     }
 
