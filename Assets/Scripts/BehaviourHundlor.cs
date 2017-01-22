@@ -41,6 +41,7 @@ public class BehaviourHundlor : MonoBehaviour {
             GameControl.instance.mainCharMovePace * Time.deltaTime);
         if (GameControl.instance.mainCharacter.position == (_objReference as Transform).position) {
             Debug.Log ("I made it!");
+            AdvStoryMonoger.instance.Check ((_objReference as Transform).parent.GetComponent<ClickableEntity> ().currentID);
             instance.monoAction = null;
         }
     }

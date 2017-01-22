@@ -60,12 +60,13 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.AddTask (new Task ("TK01"));
         puzzles.Add (puzzle);
         //---------------------------------//
-        puzzle = new Puzzle ("PZ01");
+        puzzle = new Puzzle ("PZ02");
         puzzle.AddTask (new Task ("TK02"));
         puzzles.Add (puzzle);
         //---------------------------------//
         //---------------------------------//
         //---------------------------------//
+        activePuzzles.Add (Search ("PZ01"));
     }
 
     public void Check (string _id) {
@@ -87,7 +88,25 @@ public class AdvStoryMonoger : MonoBehaviour {
         foreach (Puzzle puzzle in removals) {
             completed.Add (puzzle);
             puzzles.Remove (puzzle);
+            CallOnDone (puzzle);
         }
+    }
+
+    public Puzzle Search (string _id) {
+        for (int i = 0; i < puzzles.Count; i++) {
+            if (puzzles[i].id == _id) {
+                return puzzles[i];
+            }
+        }
+        Debug.LogWarning ("There's no puzzle with ID: " + _id);
+        return null;
+    }
+
+    void CallOnDone (Puzzle puzzle) {
+        if (!string.IsNullOrEmpty (puzzle.toActive)) {
+            activePuzzles.Add (Search (puzzle.toActive));
+        }
+        Debug.Log ("Activated " + puzzle.toActive);
     }
 
     // Update is called once per frame
