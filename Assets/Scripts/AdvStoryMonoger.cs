@@ -76,27 +76,37 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
         puzzles.Add (puzzle);
         //---------------------------------//
-		//****** Click on The Tower *******//
+		//***** Puzzles on The Tower ******//
 		//---------------------------------//
         puzzle = new Puzzle ("PZ02", "PZ03");
         puzzle.AddTask (new Task ("TK02")); //Click on Main Tower
 		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
 		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject);
 		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
-		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
-		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
-		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
 		puzzles.Add (puzzle);
 		//---------------------------------//
-		//******* Click on Molinos ********//
+		//****** Puzzles on Molinos *******//
 		//---------------------------------//
-		puzzle = new Puzzle ("PZ03");
+		puzzle = new Puzzle ("PZ03", "PZ04");
 		puzzle.AddTask(new Task("TK03")); //Click on lvl 1 molino
+		puzzle.SetOutcome("checkMolinoState", GameObject.Find("Molino1").gameObject);
+
+		puzzle = new Puzzle("PZ04", "PZ05");
 		puzzle.AddTask(new Task("TK04")); //Click on lvl 1 molino
+		puzzle.SetOutcome("checkMolinoState", GameObject.Find("Molino2").gameObject);
+
+		puzzle = new Puzzle("PZ05", "PZ06");
 		puzzle.AddTask(new Task("TK05")); //Click on lvl 2 molino (Solo posible si T3 y T4 estan ON y ningun otro molino)
+		puzzle.SetOutcome("checkMolinoState", GameObject.Find("Molino3").gameObject);
+
+		puzzle = new Puzzle("PZ06", "PZ07");
 		puzzle.AddTask(new Task("TK06")); //Click on lvl 3 molino (Solo posible si T5 y (T3 o T4) estan ON y ningun otro molino)
+		puzzle.SetOutcome("checkMolinoState", GameObject.Find("Molino4").gameObject);
+
+		puzzle = new Puzzle("PZ07", "PZ08");
 		puzzle.AddTask(new Task("TK07")); //Click on lvl 5 molino (Solo posible si T6 y ((T3 y T4) o T05) estan ON y ningun otro molino). 
-        
+		puzzle.SetOutcome("checkMolinoState", GameObject.Find("Molino5").gameObject);
+
 		//---------------------------------//
         //---------------------------------//
         activePuzzles.Add (Search ("PZ01"));

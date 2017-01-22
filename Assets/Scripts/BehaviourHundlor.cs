@@ -20,6 +20,7 @@ public class BehaviourHundlor : MonoBehaviour {
     static public BehaviourHundlor instance;
 	static public readonly List<string> SFDAData = new List<string>();
     List<MonoInstruction> actionQueue = new List<MonoInstruction> ();
+	int molinoSum;
 
     void Awake () {
         instance = this;
@@ -27,7 +28,7 @@ public class BehaviourHundlor : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+		molinoSum = 0;
 		//--------- TK00 (Antes de arreglar la torre)
 		SFDAData.Add("Aquí torre de control… \n" +
 			"Estableciendo primer contacto… \n" +
@@ -183,5 +184,25 @@ public class BehaviourHundlor : MonoBehaviour {
 			SFDAData.RemoveAt(index);
 		}
 		instance.monoAction = null;
-	} 
+	}
+
+	static public void checkMolinoState(object _objReference){
+		//If its off
+		if(!(_objReference as GameObject).GetComponent<MolinoClickeable>().itsSpining){
+			if(molinoSum == (_objReference as GameObject).GetComponent<MolinoClickeable>().numValue || ((_objReference as GameObject).GetComponent<MolinoClickeable>().numValue == 1 && molinoSum == 0)){
+				(_objReference as GameObject).GetComponent<MolinoClickeable>().itsSpining = true;
+				instance.monoAction = null;
+			}
+		}else{
+			(_objReference as GameObject).GetComponent<MolinoClickeable>().itsSpining = false;
+			instance.monoAction = null;
+		}
+
+
+		//If its on
+
+
+			
+
+	}
 }
