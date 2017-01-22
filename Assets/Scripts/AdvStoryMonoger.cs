@@ -112,7 +112,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         if (!string.IsNullOrEmpty (puzzle.toActive)) {
             activePuzzles.Add (Search (puzzle.toActive));
         }
-        BehaviourHundlor.instance.AddToMono (puzzle.outcome, ref puzzle.parameter);
+        BehaviourHundlor.instance.EnqueueAction (new MonoInstruction (puzzle.outcome, puzzle.parameter));
         Debug.Log ("Activated " + puzzle.toActive);
     }
 

@@ -1,13 +1,25 @@
 using UnityEngine;
 using System;
 using System.Reflection;
-using System.Collections;
+using System.Collections.Generic;
+
+public class MonoInstruction {
+    public string methodName;
+    public object parameter;
+
+    public MonoInstruction (string _methodName, object _parameter) {
+        methodName = _methodName;
+        parameter = _parameter;
+    }
+}
 
 public class BehaviourHundlor : MonoBehaviour {
 
     public delegate void MonoAction ();
     public MonoAction monoAction;
     static public BehaviourHundlor instance;
+
+    List<MonoInstruction> actionQueue = new List<MonoInstruction> ();
 
     void Awake () {
         instance = this;
@@ -23,6 +35,9 @@ public class BehaviourHundlor : MonoBehaviour {
 
         if (monoAction != null) {
             monoAction ();
+        } else if (actionQueue.Count > 0) {
+            AddToMono (actionQueue[0].methodName, ref actionQueue[0].parameter);
+            actionQueue.RemoveAt (0);
         }
     }
 
@@ -34,6 +49,10 @@ public class BehaviourHundlor : MonoBehaviour {
             Debug.Log ("THEN HERE");
             monoAction = (MonoAction) Delegate.CreateDelegate (typeof (MonoAction), _runtimeObject, actionFound);
         }
+    }
+
+    public void EnqueueAction (MonoInstruction action) {
+        actionQueue.Add (action);
     }
 
     static public void WalkToObjectNode (object _objReference) {
