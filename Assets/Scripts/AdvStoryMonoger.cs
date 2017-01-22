@@ -49,29 +49,55 @@ public class Puzzle {
 public class AdvStoryMonoger : MonoBehaviour {
 
     public static AdvStoryMonoger instance;
-    
     public readonly List<Puzzle> puzzles = new List<Puzzle> ();
     public readonly List<Puzzle> activePuzzles = new List<Puzzle> ();
     public readonly List<Puzzle> completed = new List<Puzzle> ();
+
+
+
 
     void Awake () {
         instance = this;
     }
 
     void Start () {
-        Puzzle puzzle;
+		
+
+		Puzzle puzzle;
+//		puzzle = new Puzzle("PZ00", "PZ01");
+
+		//---------------------------------//
+		//********* Fix The Tower *********//
+		//---------------------------------//
         puzzle = new Puzzle ("PZ01", "PZ02");
-        puzzle.AddTask (new Task ("TK01"));
+        puzzle.AddTask (new Task ("TK01")); // Click on Broken Tower
         puzzle.SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
         puzzle.SetOutcome ("DisableObject", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite2").gameObject);
         puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
         puzzles.Add (puzzle);
         //---------------------------------//
-        puzzle = new Puzzle ("PZ02");
-        puzzle.AddTask (new Task ("TK02"));
-        puzzles.Add (puzzle);
-        //---------------------------------//
-        //---------------------------------//
+		//****** Click on The Tower *******//
+		//---------------------------------//
+        puzzle = new Puzzle ("PZ02", "PZ03");
+        puzzle.AddTask (new Task ("TK02")); //Click on Main Tower
+		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
+		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject);
+		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
+		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
+		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
+		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
+		puzzles.Add (puzzle);
+		//---------------------------------//
+		//******* Click on Molinos ********//
+		//---------------------------------//
+		puzzle = new Puzzle ("PZ03");
+		puzzle.AddTask(new Task("TK03")); //Click on lvl 1 molino
+		puzzle.AddTask(new Task("TK04")); //Click on lvl 1 molino
+		puzzle.AddTask(new Task("TK05")); //Click on lvl 2 molino (Solo posible si T3 y T4 estan ON y ningun otro molino)
+		puzzle.AddTask(new Task("TK06")); //Click on lvl 3 molino (Solo posible si T5 y (T3 o T4) estan ON y ningun otro molino)
+		puzzle.AddTask(new Task("TK07")); //Click on lvl 5 molino (Solo posible si T6 y ((T3 y T4) o T05) estan ON y ningun otro molino). 
+        
+		//---------------------------------//
         //---------------------------------//
         activePuzzles.Add (Search ("PZ01"));
     }
