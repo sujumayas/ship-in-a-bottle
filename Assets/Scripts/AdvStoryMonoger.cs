@@ -63,7 +63,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         Puzzle puzzle;
         puzzle = new Puzzle ("PZ01", "PZ02");
         puzzle.AddTask (new Task ("TK01"));
-        //puzzle.SetOutcome()
+        puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
         puzzles.Add (puzzle);
         //---------------------------------//
         puzzle = new Puzzle ("PZ02");

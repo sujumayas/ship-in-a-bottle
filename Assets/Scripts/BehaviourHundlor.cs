@@ -41,12 +41,22 @@ public class BehaviourHundlor : MonoBehaviour {
             GameControl.instance.mainCharMovePace * Time.deltaTime);
         if (GameControl.instance.mainCharacter.position == (_objReference as Transform).position) {
             Debug.Log ("I made it!");
-            AdvStoryMonoger.instance.Check ((_objReference as Transform).parent.GetComponent<ClickableEntity> ().currentID);
             instance.monoAction = null;
+            AdvStoryMonoger.instance.Check ((_objReference as Transform).parent.GetComponent<ClickableEntity> ().currentID);
+            
         }
     }
 
     static public void PlayOneShotAnimation (object _objReference) {
+        if ((_objReference as Animator).runtimeAnimatorController != (_objReference as Animator).GetComponent<AnimationHolder> ().defaultAnimation) {
+            (_objReference as Animator).runtimeAnimatorController = (_objReference as Animator).GetComponent<AnimationHolder> ().defaultAnimation;
+        }
+        if (!AnimatorIsPlaying(_objReference as Animator)) {
+            instance.monoAction = null;
+        }
+    }
 
+    static public bool AnimatorIsPlaying (Animator animator) {
+        return animator.GetCurrentAnimatorStateInfo (0).normalizedTime <= 1;
     }
 }
