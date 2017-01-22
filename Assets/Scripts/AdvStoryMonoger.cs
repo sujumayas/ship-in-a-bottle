@@ -33,6 +33,11 @@ public class Puzzle {
         tasks.Add (task);
     }
 
+    public void SetOutcome (string _methodName, object _reference) {
+        outcome = _methodName;
+        parameter = _reference;
+    }
+
     public void Check (string _id) {
         foreach (Task task in tasks) {
             if (!task.done && (_id == task.target)) {
@@ -58,6 +63,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         Puzzle puzzle;
         puzzle = new Puzzle ("PZ01", "PZ02");
         puzzle.AddTask (new Task ("TK01"));
+        //puzzle.SetOutcome()
         puzzles.Add (puzzle);
         //---------------------------------//
         puzzle = new Puzzle ("PZ02");
@@ -106,6 +112,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         if (!string.IsNullOrEmpty (puzzle.toActive)) {
             activePuzzles.Add (Search (puzzle.toActive));
         }
+        BehaviourHundlor.instance.AddToMono (puzzle.outcome, ref puzzle.parameter);
         Debug.Log ("Activated " + puzzle.toActive);
     }
 

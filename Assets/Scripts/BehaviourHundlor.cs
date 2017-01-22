@@ -45,4 +45,8 @@ public class BehaviourHundlor : MonoBehaviour {
             instance.monoAction = null;
         }
     }
+
+    static public void PlayOneShotAnimation (object _objReference) {
+
+    }
 }
