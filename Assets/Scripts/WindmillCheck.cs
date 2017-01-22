@@ -15,6 +15,7 @@ public class WindmillCheck : MonoBehaviour {
         map.Add ("Molinos1", 2);
         map.Add ("Molinos2", 1);
         map.Add ("Molinos3", 1);
+        map.Add ("Molinos4", 5);
         map.Add ("Molinos5", 3);
     }
 	
@@ -44,6 +45,8 @@ public class WindmillCheck : MonoBehaviour {
             }
         } else {
             GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<Animator> ().runtimeAnimatorController = null;
+            GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().sprite =
+                GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().defaultSprite;
             currentSum -= map[windmillName];
             GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn =
                 !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
