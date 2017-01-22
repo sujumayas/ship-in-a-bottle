@@ -94,6 +94,7 @@ public class AdvStoryMonoger : MonoBehaviour {
 		puzzle.SetOutcome ("SetNextTCCComsText", 6);
 		puzzle.SetOutcome ("SetNextTCCComsText", 7);
 		puzzle.SetOutcome ("SetNextTCCComsText", 8);
+		puzzle.SetOutcome ("SetNextTCCComsText", 9);
         puzzles.Add (puzzle);
         //---------------------------------//
 		//****** Puzzles on Molinos *******//
