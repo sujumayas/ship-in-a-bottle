@@ -90,7 +90,7 @@ public class BehaviourHundlor : MonoBehaviour {
 		//--------- TK0x (Exploras y reúnes los materiales / Sacas la nave del agua  y haces el puzzle Borbicoide) (Una vez resuelto, das tap de nuevo a la antena)
 		SFDAData.Add(" ¡Éxito! Has logrado condensar el gas Borbicoide y reunir los componentes… ");
 		SFDAData.Add("No hay tiempo que perder Ese, \n" +
-			"es hora de sacar el vehículo a flote y pilotarlo hacia el agujero negro más cercano…  \n" +
+			"es hora de sacar el vehículo a flote y pilotarlo hacia el agujero negro más cercano…  \n"+
 			"[Sonido de estática]");
 		SFDAData.Add("Por favor tómese un tiempo para responder a \n" +
 			"esta encuesta sobre el servicio de extracción que acaba de recibir… \n" +
@@ -99,10 +99,8 @@ public class BehaviourHundlor : MonoBehaviour {
 
 
 	}
-	
 	// Update is called once per frame
 	void Update () {
-
         if (monoAction != null) {
             monoAction ();
         } else if (actionQueue.Count > 0) {
