@@ -14,6 +14,8 @@ public class GameControl : MonoBehaviour {
     public TextHandler bottomText;
     public TextHandler tCommsText;
 
+    public int currentCommsIndex;
+
     void Awake () {
         instance = this;
     }
