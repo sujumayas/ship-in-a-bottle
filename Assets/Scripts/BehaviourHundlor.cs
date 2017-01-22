@@ -185,9 +185,12 @@ public class BehaviourHundlor : MonoBehaviour {
     }
 
     static public void ResetTask (object _objReference) {
+        Debug.LogWarning ((string) _objReference);
+        Debug.LogWarning (AdvStoryMonoger.instance.activePuzzles.Count);
         foreach (Puzzle puzzle in AdvStoryMonoger.instance.activePuzzles) {
             foreach (Task task in puzzle.tasks) {
                 if (task.target == (string)_objReference) {
+                    Debug.LogWarning ("Setting " + task.target + "'s done to false");
                     task.done = false;
                 }
             }
@@ -195,7 +198,7 @@ public class BehaviourHundlor : MonoBehaviour {
     }
 
     static public void WindmillScriptCheck (object _objReference) {
-        (instance.lastReference as Transform).parent.GetComponent<WindmillCheck> ().Sum ((instance.lastReference as Transform).name);
+        (instance.lastReference as Transform).parent.parent.GetComponent<WindmillCheck> ().Sum ((instance.lastReference as Transform).parent.name);
         instance.monoAction = null;
     }
 

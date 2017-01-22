@@ -24,11 +24,20 @@ public class WindmillCheck : MonoBehaviour {
 	}
 
     public void Sum (string windmillName) {
-        if (currentSum == 0) {
-            if (map[windmillName] == 1) {
-                BehaviourHundlor.SetLoopAnimation (GameObject.Find (windmillName).GetComponent<Animator> ());
-                currentSum += map[windmillName];
+        if (!GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn) {
+            if (currentSum == 0) {
+                if (map[windmillName] == 1) {
+                    BehaviourHundlor.SetLoopAnimation (GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<Animator> ());
+                    currentSum += map[windmillName];
+                }
             }
+        } else {
+            GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<Animator> ().runtimeAnimatorController = null;
+            currentSum -= map[windmillName];
+        }
+        GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn = !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
+        if (currentSum != targetSum) {
+            BehaviourHundlor.ResetTask (taskID);
         }
     }
 }

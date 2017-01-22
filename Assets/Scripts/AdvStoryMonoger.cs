@@ -89,7 +89,7 @@ public class AdvStoryMonoger : MonoBehaviour {
 		//****** Puzzles on Molinos *******//
 		//---------------------------------//
         puzzle = new Puzzle ("PZ02");
-        puzzle.AddTask (new Task ("TK03", true)); //Click on a Windmill
+        puzzle.AddTask (new Task ("TK02", true)); //Click on a Windmill
         puzzle.tasks[0].SetOutcome ("WindmillScriptCheck", GameObject.Find ("TheMolinos").transform);
 		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject);
 		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
