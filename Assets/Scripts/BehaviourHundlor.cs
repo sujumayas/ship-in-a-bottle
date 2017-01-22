@@ -28,7 +28,7 @@ public class BehaviourHundlor : MonoBehaviour {
     void Awake () {
         instance = this;
         //-----------------//
-        maxTimer = 2.5f;
+        maxTimer = 5.0f;
         tempTimer = maxTimer;
     }
 
@@ -49,33 +49,23 @@ public class BehaviourHundlor : MonoBehaviour {
 
 		//--------- TK01 (Arreglaste  la torre)
 		SFDAData.Add("La señal lumínica llega fuerte y clara, \n" +
-			"excelente trabajo restableciendo el pulsar de la antena…");
+			"¡Excelente trabajo!\n" +
+			"Has restablecido el pulsar de la antena…");
 		SFDAData.Add("No hay porque alterarse S18, te sacaremos de ahí \n" +
-			"en menos de lo que implosiona una supernova… Ehhhm, mala analogía… ");
-		SFDAData.Add("¿Qué venía después? ¿Dónde dejaron el protocolo de extracción? \n" +
+			"en menos de lo que implosiona una supernova… \n" +
+			"Ehhhm, mala analogía… ");
+		SFDAData.Add("¿Qué venía después? \n" +
+			"¿Dónde dejaron el protocolo de extracción? \n" +
 			"¡Maldito personal de limpieza!");
-		SFDAData.Add("Lamentamos el percance Ese, ¿podemos llamarte Ese?... \n" +
-			"Al parecer esta sección del viejo protocolo extracción de SFA está incompleto… \n" +
-			"Por aquí se menciona un vehículo cerca a tu locación…");
+		SFDAData.Add("Lamentamos el percance Ese, \n" +
+			"¿podemos llamarte Ese?... \n" +
+			"Se menciona un vehículo cerca a tu locación…");
 		SFDAData.Add("¡Cuidado con esos ánimos! \n" +
-			"Las lecturas del sonar indican que el vehículo debería estar cerca a una masa de agua… \n" +
-			"¿Tienes idea de donde podría estar, Ese?... \n" +
-			"Al encontrarlo vuelve a enviar una señal lumínica con la antena… \n" +
-			"Es probable que la siguiente vez que recibas un mensaje como este, no sea yo quien lo envíe… \n" +
-			"Y aprovecha el paisaje: ¡La supernova se debe ver hermosa desde donde estás!");
-
-		//--------- TK02 (Click en la antena)
-		SFDAData.Add("La señal lumínica llega fuerte y clara, \n" +
-			"excelente trabajo restableciendo \n" +
-			"el pulsar de la antena…");
-		SFDAData.Add("Quiero que sepa que dejarlo varado no ha sido un acto intencional \n" +
-			"y que sus bisnietos desean conocerlo con ansias. \n" +
-			"Trabajaremos con mucho esfuerzo para que su extracción sea exitosa: \n" +
-			"Los sistemas de comunicación trabajan aún en una mínima capacidad...");
-		SFDAData.Add("...es mejor si confirma nuestras órdenes a través de la antena… \n" +
-			"Las pulsaciones de luz son la forma más certera \n" +
-			"de cruzar la barrera temporal que nos separa…");
-		SFDAData.Add("...Otro texto??");
+			"Las lecturas del sonar indican que \n" +
+			"el vehículo debería estar cerca a una masa de agua… \n" +
+			"Encuéntralo y vuelve a enviar una señal lumínica... \n");
+		SFDAData.Add("Y aprovecha el paisaje: \n" +
+			"¡La supernova se debe ver hermosa desde ahí!");
 
 		//--------- TK0x (Encuentras la nave y envías señal lumínica)
 		SFDAData.Add("¿Sujeto 18?, aquí Torre de Control estableciendo contacto nuevamente… \n" +
