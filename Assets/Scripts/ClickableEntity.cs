@@ -4,6 +4,7 @@ using System.Collections;
 public class ClickableEntity : MonoBehaviour {
 
     protected Transform walkNode;
+    public string currentID;
     public string hoverText;
 
 	// Use this for initialization
