@@ -75,6 +75,11 @@ public class BehaviourHundlor : MonoBehaviour {
         }
     }
 
+    static public void DisableObject (object _objReference) {
+        (_objReference as GameObject).SetActive (false);
+        instance.monoAction = null;
+    }
+
     static public bool AnimatorIsPlaying (Animator animator) {
         return animator.GetCurrentAnimatorStateInfo (0).normalizedTime <= 1;
     }
