@@ -169,8 +169,30 @@ public class BehaviourHundlor : MonoBehaviour {
         }
     }
 
+    static public void SetLoopAnimation (object _objReference) {
+        if ((_objReference as Animator).runtimeAnimatorController != (_objReference as Animator).GetComponent<AnimationHolder> ().defaultAnimation) {
+            (_objReference as Animator).runtimeAnimatorController = (_objReference as Animator).GetComponent<AnimationHolder> ().defaultAnimation;
+        }
+        instance.monoAction = null;
+    }
+
     static public void DisableObject (object _objReference) {
         (_objReference as GameObject).SetActive (false);
+        instance.monoAction = null;
+    }
+
+    static public void ResetTask (object _objReference) {
+        foreach (Puzzle puzzle in AdvStoryMonoger.instance.activePuzzles) {
+            foreach (Task task in puzzle.tasks) {
+                if (task.target == (string)_objReference) {
+                    task.done = false;
+                }
+            }
+        }
+    }
+
+    static public void WindmillScriptCheck (object _objReference) {
+        (_objReference as Transform).parent.GetComponent<WindmillCheck> ().Sum ((_objReference as Transform).name);
         instance.monoAction = null;
     }
 

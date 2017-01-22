@@ -6,12 +6,16 @@ public class Task {
     public string target;
     public bool hasOutcome;
 
-    public string outcome;
-    public object parameter;
+    public List<MonoInstruction> outcomes;
 
     public Task (string _target, bool _hasOutcome = false) {
+        outcomes = new List<MonoInstruction> ();
         target = _target;
         hasOutcome = _hasOutcome;
+    }
+
+    public void SetOutcome (string _methodName, object _reference) {
+        outcomes.Add (new MonoInstruction (_methodName, _reference));
     }
 }
 
@@ -41,6 +45,11 @@ public class Puzzle {
         foreach (Task task in tasks) {
             if (!task.done && (_id == task.target)) {
                 task.done = true;
+                if (task.hasOutcome) {
+                    foreach (MonoInstruction outcome in task.outcomes) {
+                        BehaviourHundlor.instance.EnqueueAction (outcome);
+                    }
+                }
             }
         }
     }
@@ -77,12 +86,13 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.SetOutcome ("SetNextTCCComsText", 0);
         puzzles.Add (puzzle);
         //---------------------------------//
-		//***** Puzzles on The Tower ******//
+		//****** Puzzles on Molinos *******//
 		//---------------------------------//
-        puzzle = new Puzzle ("PZ02", "PZ03");
-        puzzle.AddTask (new Task ("TK02")); //Click on Main Tower
-		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject);
-		puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
+        puzzle = new Puzzle ("PZ02");
+        puzzle.AddTask (new Task ("TK03", true)); //Click on a Windmill
+        puzzle.tasks[0].SetOutcome ("SetLoopAnimation", GameObject.Find ("Molinos2").transform.FindChild ("Sprite").GetComponent<Animator> ());
+		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject);
+		//puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
 		puzzles.Add (puzzle);
 		//---------------------------------//
 		//****** Puzzles on Molinos *******//
