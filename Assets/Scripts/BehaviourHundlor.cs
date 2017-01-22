@@ -41,9 +41,10 @@ public class BehaviourHundlor : MonoBehaviour {
 		SFDAData.Add("Quiero que sepa que dejarlo varado \n" +
 			"no ha sido un acto intencional y que \n" +
 			"sus bisnietos desean conocerlo con ansias. ");
-		SFDAData.Add("Trabajaremos con mucho esfuerzo para que su extracción sea exitosa: \n" +
-			"Los sistemas de comunicación funcinonan aún en una mínima capacidad, \n" +
-			"es mejor si confirma nuestras órdenes a través de la antena… ");
+		SFDAData.Add("Trabajaremos con mucho esfuerzo \n" +
+			"para que su extracción sea exitosa: \n" +
+			"Los sistemas de comunicación están fallando, \n" +
+			"es mejor si confirma nuestras órdenes a través de la antena.");
 		SFDAData.Add("Las pulsaciones de luz son la forma más certera de \n" +
 			"cruzar la barrera temporal que nos separa…");
 
@@ -68,18 +69,23 @@ public class BehaviourHundlor : MonoBehaviour {
 			"¡La supernova se debe ver hermosa desde ahí!");
 
 		//--------- TK0x (Encuentras la nave y envías señal lumínica)
-		SFDAData.Add("¿Sujeto 18?, aquí Torre de Control estableciendo contacto nuevamente… \n" +
+		SFDAData.Add("¿Sujeto 18?, Aquí Torre de Control \n" +
+			"estableciendo contacto nuevamente… \n" +
 			"Vemos que ha sido capaz de ubicar el vehículo…");
 		SFDAData.Add("Sin prisa, pero sin pausa se llega seguro. \n" +
 			"Al parecer el estado del vehículo es un tanto deficiente: \n" +
 			"Primero habrá que sacarlo de esa ciénaga y luego ver... \n" +
-			"si es posible repararlo en esas condiciones con los materiales que se tenga al alcance… \n" +
-			"Lo que está claro es que hará falta gas Borbicoide y algunos componentes como... \n" +
+			"si es posible repararlo en esas condiciones \n" +
+			"con los materiales que se tenga al alcance… \n" +
+			"Lo que está claro es que hará falta será un poco de \n" +
+			"gas Borbicoide y algunos componentes como... \n" +
 			"[Sonido de estática - comunicación ininteligible]");
 		SFDAData.Add("Así de fácil. \n" +
 			"Póngase en contacto apenas logre reunir esos materiales… \n" +
-			"Si la supernova avanza, la extracción fallará, le ruego ¡Apúrese! \n" +
-			"...no quiero perder mi empleo, ni a otro sujeto, ya sería el tercero este mes...");
+			"Si la supernova avanza, \n" +
+			"la extracción fallará, le ruego ¡Apúrese! \n" +
+			"...no quiero perder mi empleo, \n" +
+			"ni a otro sujeto, ya sería el tercero este mes...");
 
 		//--------- TK0x (Exploras y reúnes los materiales / Sacas la nave del agua  y haces el puzzle Borbicoide) (Una vez resuelto, das tap de nuevo a la antena)
 		SFDAData.Add(" ¡Éxito! Has logrado condensar el gas Borbicoide y reunir los componentes… ");
@@ -90,6 +96,8 @@ public class BehaviourHundlor : MonoBehaviour {
 			"esta encuesta sobre el servicio de extracción que acaba de recibir… \n" +
 			"del 1 al 10… [Sonido de estática]");
 		SFDAData.Add("Fin de la transmisión…");	
+
+
 	}
 	
 	// Update is called once per frame
