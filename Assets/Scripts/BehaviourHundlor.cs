@@ -197,7 +197,7 @@ public class BehaviourHundlor : MonoBehaviour {
         }
     }
 
-    static public void WindmillScriptCheck (object _objReference) {
+    public void WindmillScriptCheck (object _objReference) {
         (instance.lastReference as Transform).parent.parent.GetComponent<WindmillCheck> ().Sum ((instance.lastReference as Transform).parent.name);
         instance.monoAction = null;
     }

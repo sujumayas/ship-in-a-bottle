@@ -6,6 +6,7 @@ public class Task {
     public string target;
     public bool hasOutcome;
 
+    public MonoInstruction firstOut;
     public List<MonoInstruction> outcomes;
 
     public Task (string _target, bool _hasOutcome = false) {
@@ -15,7 +16,11 @@ public class Task {
     }
 
     public void SetOutcome (string _methodName, object _reference) {
-        outcomes.Add (new MonoInstruction (_methodName, _reference));
+        if (firstOut != null) {
+            outcomes.Add (new MonoInstruction (_methodName, _reference));
+        } else {
+            firstOut = new MonoInstruction (_methodName, _reference);
+        } 
     }
 }
 
@@ -46,6 +51,7 @@ public class Puzzle {
             if (!task.done && (_id == task.target)) {
                 task.done = true;
                 if (task.hasOutcome) {
+                    BehaviourHundlor.instance.SendMessage (task.firstOut.methodName, task.firstOut.parameter);
                     foreach (MonoInstruction outcome in task.outcomes) {
                         BehaviourHundlor.instance.EnqueueAction (outcome);
                     }

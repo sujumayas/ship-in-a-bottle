@@ -29,13 +29,26 @@ public class WindmillCheck : MonoBehaviour {
                 if (map[windmillName] == 1) {
                     BehaviourHundlor.SetLoopAnimation (GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<Animator> ());
                     currentSum += map[windmillName];
+
+                    GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn =
+                        !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
+                }
+            } else {
+                if (map[windmillName] == currentSum) {
+                    BehaviourHundlor.SetLoopAnimation (GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<Animator> ());
+                    currentSum += map[windmillName];
+
+                    GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn =
+                        !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
                 }
             }
         } else {
             GameObject.Find (windmillName).transform.FindChild ("Sprite").GetComponent<Animator> ().runtimeAnimatorController = null;
             currentSum -= map[windmillName];
+            GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn =
+                !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
         }
-        GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn = !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
+        
         if (currentSum != targetSum) {
             BehaviourHundlor.ResetTask (taskID);
         }
