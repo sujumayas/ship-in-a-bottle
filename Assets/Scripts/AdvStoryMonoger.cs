@@ -89,7 +89,11 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
         puzzle.SetOutcome ("DisableObject", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite2").gameObject);
         puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
-        puzzle.SetOutcome ("SetNextTCCComsText", 0);
+        puzzle.SetOutcome ("SetNextTCCComsText", 4);
+		puzzle.SetOutcome ("SetNextTCCComsText", 5);
+		puzzle.SetOutcome ("SetNextTCCComsText", 6);
+		puzzle.SetOutcome ("SetNextTCCComsText", 7);
+		puzzle.SetOutcome ("SetNextTCCComsText", 8);
         puzzles.Add (puzzle);
         //---------------------------------//
 		//****** Puzzles on Molinos *******//
