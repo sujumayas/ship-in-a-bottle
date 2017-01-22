@@ -56,13 +56,30 @@ public class BehaviourHundlor : MonoBehaviour {
     }
 
     static public void WalkToObjectNode (object _objReference) {
+        if (GameControl.instance.mainCharacter.GetComponent<Animator>().runtimeAnimatorController != 
+            GameControl.instance.mainCharacter.GetComponent<CharacterAnimations> ().moving) {
+            GameControl.instance.mainCharacter.GetComponent<Animator> ().runtimeAnimatorController =
+            GameControl.instance.mainCharacter.GetComponent<CharacterAnimations> ().moving;
+        }
         GameControl.instance.mainCharacter.position = Vector3.MoveTowards (GameControl.instance.mainCharacter.position, (_objReference as Transform).position,
             GameControl.instance.mainCharMovePace * Time.deltaTime);
         if (GameControl.instance.mainCharacter.position == (_objReference as Transform).position) {
+            GameControl.instance.mainCharacter.GetComponent<Animator> ().runtimeAnimatorController =
+            GameControl.instance.mainCharacter.GetComponent<CharacterAnimations> ().idle;
             Debug.Log ("I made it!");
             instance.monoAction = null;
             AdvStoryMonoger.instance.Check ((_objReference as Transform).parent.GetComponent<ClickableEntity> ().currentID);
             
+        }
+    }
+
+    static public void PlayWorkAnimation (object _objReference) {
+        if ((_objReference as Animator).runtimeAnimatorController != (_objReference as Animator).GetComponent<CharacterAnimations> ().working) {
+            (_objReference as Animator).runtimeAnimatorController = (_objReference as Animator).GetComponent<CharacterAnimations> ().working;
+        }
+        if (!AnimatorIsPlaying (_objReference as Animator)) {
+            (_objReference as Animator).runtimeAnimatorController = (_objReference as Animator).GetComponent<CharacterAnimations> ().idle;
+            instance.monoAction = null;
         }
     }
 

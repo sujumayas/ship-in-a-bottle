@@ -62,6 +62,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         Puzzle puzzle;
         puzzle = new Puzzle ("PZ01", "PZ02");
         puzzle.AddTask (new Task ("TK01"));
+        puzzle.SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
         puzzle.SetOutcome ("DisableObject", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite2").gameObject);
         puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
         puzzles.Add (puzzle);
