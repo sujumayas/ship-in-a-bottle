@@ -23,6 +23,8 @@ public class BehaviourHundlor : MonoBehaviour {
     float maxTimer;
     float tempTimer;
 
+    public object lastReference;
+
     void Awake () {
         instance = this;
         //-----------------//
@@ -144,6 +146,7 @@ public class BehaviourHundlor : MonoBehaviour {
             GameControl.instance.mainCharacter.GetComponent<Animator> ().runtimeAnimatorController =
             GameControl.instance.mainCharacter.GetComponent<CharacterAnimations> ().idle;
             Debug.Log ("I made it!");
+            instance.lastReference = _objReference;
             instance.monoAction = null;
             AdvStoryMonoger.instance.Check ((_objReference as Transform).parent.GetComponent<ClickableEntity> ().currentID);
             
@@ -192,7 +195,7 @@ public class BehaviourHundlor : MonoBehaviour {
     }
 
     static public void WindmillScriptCheck (object _objReference) {
-        (_objReference as Transform).parent.GetComponent<WindmillCheck> ().Sum ((_objReference as Transform).name);
+        (instance.lastReference as Transform).parent.GetComponent<WindmillCheck> ().Sum ((instance.lastReference as Transform).name);
         instance.monoAction = null;
     }
 

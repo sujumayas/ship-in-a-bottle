@@ -15,7 +15,7 @@ public class WindmillCheck : MonoBehaviour {
         map.Add ("Molinos1", 2);
         map.Add ("Molinos2", 1);
         map.Add ("Molinos3", 1);
-        map.Add ("Molinos3", 3);
+        map.Add ("Molinos5", 3);
     }
 	
 	// Update is called once per frame
@@ -24,6 +24,11 @@ public class WindmillCheck : MonoBehaviour {
 	}
 
     public void Sum (string windmillName) {
-
+        if (currentSum == 0) {
+            if (map[windmillName] == 1) {
+                BehaviourHundlor.SetLoopAnimation (GameObject.Find (windmillName).GetComponent<Animator> ());
+                currentSum += map[windmillName];
+            }
+        }
     }
 }
