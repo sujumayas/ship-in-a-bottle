@@ -13,7 +13,7 @@ public class GameControl : MonoBehaviour {
 
     public TextHandler bottomText;
     public TextHandler tCommsText;
-
+    public TextHandler purifier;
     public int currentCommsIndex;
 
     void Awake () {

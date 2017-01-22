@@ -51,7 +51,7 @@ public class WindmillCheck : MonoBehaviour {
             GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn =
                 !GameObject.Find (windmillName).GetComponent<MolinoClickeable> ().isTurnedOn;
         }
-        
+        GameControl.instance.purifier.SetText (currentSum + "/" + targetSum);
         if (currentSum != targetSum) {
             BehaviourHundlor.ResetTask (taskID);
         }

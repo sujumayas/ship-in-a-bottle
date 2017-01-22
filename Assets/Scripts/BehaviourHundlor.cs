@@ -20,15 +20,15 @@ public class BehaviourHundlor : MonoBehaviour {
     static public BehaviourHundlor instance;
 	static public readonly List<string> SFDAData = new List<string>();
     List<MonoInstruction> actionQueue = new List<MonoInstruction> ();
-    float maxTimer;
-    float tempTimer;
+    public float maxTimer;
+    public float tempTimer;
 
     public object lastReference;
 
     void Awake () {
         instance = this;
         //-----------------//
-        maxTimer = 5.0f;
+        //maxTimer = 5.0f;
         tempTimer = maxTimer;
     }
 
@@ -97,10 +97,7 @@ public class BehaviourHundlor : MonoBehaviour {
 			"del 1 al 10… [Sonido de estática]");
 		SFDAData.Add("Fin de la transmisión…");
 
-        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 0));
-        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 1));
-        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 2));
-        EnqueueAction (new MonoInstruction ("SetNextTCCComsText", 3));
+        
     }
 	// Update is called once per frame
 	void Update () {
