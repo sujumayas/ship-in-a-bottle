@@ -6,9 +6,10 @@ public class ClickableEntity : MonoBehaviour {
     protected Transform walkNode;
     public string currentID;
     public string hoverText;
+    public string alternateHover;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         walkNode = transform.GetChild (0);
 	}
 	
@@ -17,14 +18,14 @@ public class ClickableEntity : MonoBehaviour {
 	
 	}
 
-    void OnMouseEnter () {
+    protected void OnMouseEnter () {
         if (!GameControl.instance.inTransition) {
             Debug.Log ("You Just put your mouse over a Clickable, setting Hover text on BottomBox");
             GameControl.instance.bottomText.SetText (hoverText);
         }
     }
 
-    void OnMouseExit () {
+    protected void OnMouseExit () {
         if (!GameControl.instance.inTransition) {
             GameControl.instance.bottomText.SetText ("");
         }

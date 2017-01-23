@@ -59,33 +59,36 @@ public class BehaviourHundlor : MonoBehaviour {
 			"¿Dónde dejaron el protocolo de extracción? \n" +
 			"¡Maldito personal de limpieza!");
 		SFDAData.Add("Lamentamos el percance Ese, \n" +
-			"¿podemos llamarte Ese?... \n" +
+            "¿podemos llamarte Ese?… \n" +
 			"Se menciona un vehículo cerca a tu locación…");
 		SFDAData.Add("¡Cuidado con esos ánimos! \n" +
 			"Las lecturas del sonar indican que \n" +
 			"el vehículo debería estar cerca a una masa de agua… \n" +
-			"Encuéntralo y vuelve a enviar una señal lumínica... \n");
+            "Encuéntralo y vuelve a enviar una señal lumínica…");
 		SFDAData.Add("Y aprovecha el paisaje: \n" +
 			"¡La supernova se debe ver hermosa desde ahí!");
 
 		//--------- TK0x (Encuentras la nave y envías señal lumínica)
 		SFDAData.Add("¿Sujeto 18?, Aquí Torre de Control \n" +
 			"estableciendo contacto nuevamente… \n" +
-			"Vemos que ha sido capaz de ubicar el vehículo…");
-		SFDAData.Add("Sin prisa, pero sin pausa se llega seguro. \n" +
-			"Al parecer el estado del vehículo es un tanto deficiente: \n" +
-			"Primero habrá que sacarlo de esa ciénaga y luego ver... \n" +
-			"si es posible repararlo en esas condiciones \n" +
-			"con los materiales que se tenga al alcance… \n" +
-			"Lo que está claro es que hará falta será un poco de \n" +
-			"gas Borbicoide y algunos componentes como... \n" +
+			"Vemos que ha sido capaz de \n" + 
+            "ubicar el vehículo…");
+        SFDAData.Add ("Sin prisa, pero sin pausa se llega seguro. \n" +
+            "Al parecer el estado del vehículo\n" + 
+            "es un tanto deficiente:");
+        SFDAData.Add ("Primero habrá que sacarlo de esa ciénaga y luego ver… \n" +
+            "si es posible repararlo en esas condiciones \n" +
+            "con los materiales que se tenga al alcance…");
+        SFDAData.Add ("Lo que está claro es que hará falta será un poco de \n" +
+            "gas Borbicoide y algunos componentes como… \n" +
 			"[Sonido de estática - comunicación ininteligible]");
-		SFDAData.Add("Así de fácil. \n" +
-			"Póngase en contacto apenas logre reunir esos materiales… \n" +
-			"Si la supernova avanza, \n" +
+        SFDAData.Add ("Así de fácil. \n" +
+            "Póngase en contacto apenas \n" +
+            "logre reunir esos materiales… \n");
+        SFDAData.Add ("Si la supernova avanza, \n" +
 			"la extracción fallará, le ruego ¡Apúrese! \n" +
-			"...no quiero perder mi empleo, \n" +
-			"ni a otro sujeto, ya sería el tercero este mes...");
+            "…no quiero perder mi empleo, \n" +
+            "ni a otro sujeto, ya sería el tercero este mes…");
 
 		//--------- TK0x (Exploras y reúnes los materiales / Sacas la nave del agua  y haces el puzzle Borbicoide) (Una vez resuelto, das tap de nuevo a la antena)
 		SFDAData.Add(" ¡Éxito! Has logrado condensar el gas Borbicoide y reunir los componentes… ");
@@ -177,6 +180,13 @@ public class BehaviourHundlor : MonoBehaviour {
 
     static public void DisableObject (object _objReference) {
         (_objReference as GameObject).SetActive (false);
+        instance.monoAction = null;
+    }
+
+    static public void SwapHoverText (object _objReference) {
+        string temp = (_objReference as ClickableEntity).hoverText;
+        (_objReference as ClickableEntity).hoverText = (_objReference as ClickableEntity).alternateHover;
+        (_objReference as ClickableEntity).alternateHover = temp;
         instance.monoAction = null;
     }
 

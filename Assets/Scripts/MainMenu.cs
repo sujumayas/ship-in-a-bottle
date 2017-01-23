@@ -11,6 +11,19 @@ public class MainMenu : ClickableEntity {
 
     }
 
+    new void OnMouseEnter () {
+        base.OnMouseEnter ();
+        object playButtonAnimator = transform.FindChild ("Sprite").GetComponent<Animator> ();
+        BehaviourHundlor.instance.AddToMono ("SetLoopAnimation", ref playButtonAnimator);
+    }
+
+    new void OnMouseExit () {
+        base.OnMouseExit ();
+        transform.FindChild ("Sprite").GetComponent<Animator> ().runtimeAnimatorController = null;
+        transform.FindChild ("Sprite").GetComponent<SpriteRenderer> ().sprite =
+            GetComponent<MolinoClickeable> ().defaultSprite;
+    }
+
     //
     void OnMouseDown () {
         if (!GameControl.instance.inTransition && BehaviourHundlor.instance.monoAction == null) {

@@ -6,20 +6,22 @@ public class Task {
     public string target;
     public bool hasOutcome;
 
+    public bool usesFirstOut;
     public MonoInstruction firstOut;
     public List<MonoInstruction> outcomes;
 
-    public Task (string _target, bool _hasOutcome = false) {
+    public Task (string _target, bool _hasOutcome = false, bool _usesFirstOut = false) {
         outcomes = new List<MonoInstruction> ();
         target = _target;
         hasOutcome = _hasOutcome;
+        usesFirstOut = _usesFirstOut;
     }
 
     public void SetOutcome (string _methodName, object _reference) {
-        if (firstOut != null) {
-            outcomes.Add (new MonoInstruction (_methodName, _reference));
-        } else {
+        if (usesFirstOut && firstOut == null) {
             firstOut = new MonoInstruction (_methodName, _reference);
+        } else {
+            outcomes.Add (new MonoInstruction (_methodName, _reference));
         } 
     }
 }
@@ -51,7 +53,9 @@ public class Puzzle {
             if (!task.done && (_id == task.target)) {
                 task.done = true;
                 if (task.hasOutcome) {
-                    BehaviourHundlor.instance.SendMessage (task.firstOut.methodName, task.firstOut.parameter);
+                    if (task.usesFirstOut) {
+                        BehaviourHundlor.instance.SendMessage (task.firstOut.methodName, task.firstOut.parameter);
+                    }
                     foreach (MonoInstruction outcome in task.outcomes) {
                         BehaviourHundlor.instance.EnqueueAction (outcome);
                     }
@@ -99,20 +103,48 @@ public class AdvStoryMonoger : MonoBehaviour {
         //---------------------------------//
 		//****** Puzzles on Molinos *******//
 		//---------------------------------//
-        puzzle = new Puzzle ("PZ02");
-        puzzle.AddTask (new Task ("TK02", true)); //Click on a Windmill
+        puzzle = new Puzzle ("PZ02", "PZ03");
+        puzzle.AddTask (new Task ("TK02", true, true)); //Click on a Windmill
         puzzle.tasks[0].SetOutcome ("WindmillScriptCheck", GameObject.Find ("TheMolinos").transform);
         puzzle.SetOutcome ("DisableObject", GameObject.Find ("AguaNegra"));
-        //puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject);
-        //puzzle.SetOutcome("SetNextTCCComsText", GameObject.Find("TCComs").gameObject); 
         puzzles.Add (puzzle);
-		//---------------------------------//
-		//****** Puzzles on Molinos *******//
-		//---------------------------------//
-		
-
-		//---------------------------------//
         //---------------------------------//
+        //****** Puzzles on TComms ********//
+        //---------------------------------//
+        puzzle = new Puzzle ("PZ03", "PZ04");
+        puzzle.AddTask (new Task ("TK03"));
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Rotor").GetComponent<ClickableEntity> ());
+        puzzle.SetOutcome ("SetNextTCCComsText", 10);
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Pollito").GetComponent<ClickableEntity> ());
+        puzzle.SetOutcome ("SetNextTCCComsText", 11);
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Panther").GetComponent<ClickableEntity> ());
+        puzzle.SetOutcome ("SetNextTCCComsText", 12);
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Varilla").GetComponent<ClickableEntity> ());
+        puzzle.SetOutcome ("SetNextTCCComsText", 13);
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Frajalia").GetComponent<ClickableEntity> ());
+        puzzle.SetOutcome ("SetNextTCCComsText", 14);
+        puzzle.SetOutcome ("SetNextTCCComsText", 15);
+        puzzles.Add (puzzle);
+        //---------------------------------//
+        //**** Puzzles on Parts and BBQ ***//
+        //---------------------------------//
+        puzzle = new Puzzle ("PZ04");
+        puzzle.AddTask (new Task ("TK04", true));
+        puzzle.tasks[0].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
+        puzzle.tasks[0].SetOutcome ("DisableObject", GameObject.Find ("Rotor"));
+        puzzle.AddTask (new Task ("TK05", true));
+        puzzle.tasks[1].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
+        puzzle.tasks[1].SetOutcome ("DisableObject", GameObject.Find ("Pollito"));
+        puzzle.AddTask (new Task ("TK06", true));
+        puzzle.tasks[2].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
+        puzzle.tasks[2].SetOutcome ("DisableObject", GameObject.Find ("Panther"));
+        puzzle.AddTask (new Task ("TK07", true));
+        puzzle.tasks[3].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
+        puzzle.tasks[3].SetOutcome ("DisableObject", GameObject.Find ("Varilla"));
+        puzzle.AddTask (new Task ("TK08", true));
+        puzzle.tasks[4].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
+        puzzle.tasks[4].SetOutcome ("DisableObject", GameObject.Find ("Frajalia"));
+        puzzles.Add (puzzle);
         activePuzzles.Add (Search ("PZ01"));
     }
 
