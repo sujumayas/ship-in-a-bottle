@@ -93,6 +93,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
         puzzle.SetOutcome ("DisableObject", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite2").gameObject);
         puzzle.SetOutcome ("PlayOneShotAnimation", GameObject.Find ("BrokenAntena").transform.FindChild ("Sprite").GetComponent<Animator> ());
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("BrokenAntena").GetComponent<ClickableEntity> ());
         puzzle.SetOutcome ("SetNextTCCComsText", 4);
 		puzzle.SetOutcome ("SetNextTCCComsText", 5);
 		puzzle.SetOutcome ("SetNextTCCComsText", 6);
@@ -107,12 +108,13 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.AddTask (new Task ("TK02", true, true)); //Click on a Windmill
         puzzle.tasks[0].SetOutcome ("WindmillScriptCheck", GameObject.Find ("TheMolinos").transform);
         puzzle.SetOutcome ("DisableObject", GameObject.Find ("AguaNegra"));
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("AntenaComms").GetComponent<ClickableEntity> ());
         puzzles.Add (puzzle);
         //---------------------------------//
         //****** Puzzles on TComms ********//
         //---------------------------------//
         puzzle = new Puzzle ("PZ03", "PZ04");
-        puzzle.AddTask (new Task ("TK03"));
+        puzzle.AddTask (new Task ("TK03")); //Click on TComms
         puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Rotor").GetComponent<ClickableEntity> ());
         puzzle.SetOutcome ("SetNextTCCComsText", 10);
         puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Pollito").GetComponent<ClickableEntity> ());
@@ -124,6 +126,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("Frajalia").GetComponent<ClickableEntity> ());
         puzzle.SetOutcome ("SetNextTCCComsText", 14);
         puzzle.SetOutcome ("SetNextTCCComsText", 15);
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("AntenaComms").GetComponent<ClickableEntity> ());
         puzzles.Add (puzzle);
         //---------------------------------//
         //**** Puzzles on Parts and BBQ ***//
