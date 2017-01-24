@@ -7,6 +7,8 @@ public class FactoryHelper : MonoBehaviour {
     Renderer spriteRend;
     public float fadePace;
 
+    public GameObject targetClickeable;
+
     void Start () {
         spriteRend = transform.parent.FindChild ("Sprite").GetComponent<Renderer> ();
     }
@@ -17,6 +19,12 @@ public class FactoryHelper : MonoBehaviour {
             Color temp = spriteRend.material.color;
             temp.a = Mathf.MoveTowards (temp.a, targetValue, fadePace * Time.deltaTime);
             spriteRend.material.color = temp;
+        }
+
+        if ((spriteRend.material.color.a == 0) && !targetClickeable.activeInHierarchy) {
+            targetClickeable.SetActive (true);
+        } else if ((spriteRend.material.color.a != 0) && targetClickeable.activeInHierarchy) {
+            targetClickeable.SetActive (false);
         }
     }
 
