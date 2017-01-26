@@ -131,7 +131,7 @@ public class AdvStoryMonoger : MonoBehaviour {
         //---------------------------------//
         //**** Puzzles on Parts and BBQ ***//
         //---------------------------------//
-        puzzle = new Puzzle ("PZ04");
+        puzzle = new Puzzle ("PZ04", "PZ05");
         puzzle.AddTask (new Task ("TK04", true));
         puzzle.tasks[0].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
         puzzle.tasks[0].SetOutcome ("DisableObject", GameObject.Find ("Rotor"));
@@ -147,7 +147,21 @@ public class AdvStoryMonoger : MonoBehaviour {
         puzzle.AddTask (new Task ("TK08", true));
         puzzle.tasks[4].SetOutcome ("PlayWorkAnimation", GameControl.instance.mainCharacter.GetComponent<Animator> ());
         puzzle.tasks[4].SetOutcome ("DisableObject", GameObject.Find ("Frajalia"));
+        puzzle.AddTask (new Task ("TK10", true, true));
+        puzzle.tasks[5].SetOutcome ("ButtonScriptCheck", GameObject.Find ("Botones").transform);
+        puzzle.SetOutcome ("SwapHoverText", GameObject.Find ("AntenaComms").GetComponent<ClickableEntity> ());
         puzzles.Add (puzzle);
+        //---------------------------------//
+        //****** Puzzles on TComms ********//
+        //---------------------------------//
+        puzzle = new Puzzle ("PZ05");
+        puzzle.AddTask (new Task ("TK03")); //Click on TComms
+        puzzle.SetOutcome ("SetNextTCCComsText", 16);
+        puzzle.SetOutcome ("SetNextTCCComsText", 17);
+        puzzle.SetOutcome ("SetNextTCCComsText", 18);
+        puzzle.SetOutcome ("SetNextTCCComsText", 19);
+        puzzles.Add (puzzle);
+        //------ Adding first puzzle ------//
         activePuzzles.Add (Search ("PZ01"));
     }
 

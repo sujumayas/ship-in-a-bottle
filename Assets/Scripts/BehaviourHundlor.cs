@@ -90,17 +90,18 @@ public class BehaviourHundlor : MonoBehaviour {
             "…no quiero perder mi empleo, \n" +
             "ni a otro sujeto, ya sería el tercero este mes…");
 
-		//--------- TK0x (Exploras y reúnes los materiales / Sacas la nave del agua  y haces el puzzle Borbicoide) (Una vez resuelto, das tap de nuevo a la antena)
-		SFDAData.Add(" ¡Éxito! Has logrado condensar el gas Borbicoide y reunir los componentes… ");
+		//--------- TK1x (Exploras y reúnes los materiales / Sacas la nave del agua  y haces el puzzle Borbicoide) (Una vez resuelto, das tap de nuevo a la antena)
+		SFDAData.Add(" ¡Éxito! Has logrado condensar el gas Borbicoide\n" +
+            "y reunir los componentes… ");
 		SFDAData.Add("No hay tiempo que perder Ese, \n" +
-			"es hora de sacar el vehículo a flote y pilotarlo hacia el agujero negro más cercano…  \n"+
+			"es hora de sacar el vehículo a flote y\n" +
+            "pilotarlo hacia el agujero negro más cercano…  \n"+
 			"[Sonido de estática]");
 		SFDAData.Add("Por favor tómese un tiempo para responder a \n" +
-			"esta encuesta sobre el servicio de extracción que acaba de recibir… \n" +
+			"esta encuesta sobre el servicio de\n" +
+            "extracción que acaba de recibir… \n" +
 			"del 1 al 10… [Sonido de estática]");
 		SFDAData.Add("Fin de la transmisión…");
-
-        
     }
 	// Update is called once per frame
 	void Update () {
@@ -190,6 +191,11 @@ public class BehaviourHundlor : MonoBehaviour {
         instance.monoAction = null;
     }
 
+    static public void TranslateObjectUp (object _objReference) {
+        (_objReference as Transform).Translate (0, 25, 0);
+        instance.monoAction = null;
+    }
+
     static public void ResetTask (object _objReference) {
         Debug.LogWarning ((string) _objReference);
         Debug.LogWarning (AdvStoryMonoger.instance.activePuzzles.Count);
@@ -202,9 +208,18 @@ public class BehaviourHundlor : MonoBehaviour {
             }
         }
     }
+    static public void ClearActionQueue (object _objReference) {
+        while (instance.actionQueue.Count != 0) {
+            instance.actionQueue.RemoveAt (0);
+        }
+    }
 
     public void WindmillScriptCheck (object _objReference) {
         (instance.lastReference as Transform).parent.parent.GetComponent<WindmillCheck> ().Sum ((instance.lastReference as Transform).parent.name);
+        instance.monoAction = null;
+    }
+    public void ButtonScriptCheck (object _objReference) {
+        (_objReference as Transform).GetComponent<ButtonCheck> ().Test ((instance.lastReference as Transform).name);
         instance.monoAction = null;
     }
 
